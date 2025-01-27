@@ -8,3 +8,4 @@ Para el diseño de diagramas se utilizan los programas de [Drawio](https://app.d
 
 En [Auxiliares](Documentacion/Auxiliares/) podras encontrar documentos como contratos, derechos y consentimientos que firma el paciente y asi como formatos y formularios que son rellenados por diversos actores del sistema.
 
+Para el [diseño](https://www.figma.com/design/dbpzwYaXPzMPuejMPXfJ6W/SS?node-id=6-2&t=uVoqxorTXVj3qHd7-1) se utilizó la herramienta de Figma y se tomaron en cuenta lo estandares de diseño de Material Design.
