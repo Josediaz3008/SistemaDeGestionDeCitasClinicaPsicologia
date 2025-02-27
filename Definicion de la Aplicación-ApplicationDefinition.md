@@ -58,7 +58,8 @@ El **SistemaDeGestionDeCitasClinicas** es esencial para la Cl√≠nica de Psicolog√
 # Application Definition
 
 ## 1. Establish the Objective of the Application
-The main objective of the **Clinical Appointment Management System** is to modernize and automate appointment scheduling and therapeutic follow-up at the SEAP Psychology Clinic. This application is designed to:
+The main objective of the **Clinical Appointment Management System** is to modernize and automate appointment scheduling and therapeutic follow-up at the SEAP Clinic of the Faculty of Psychology UADY. With this product, we seek to:
+
 - **Optimize resource allocation:** Efficiently manage rooms, therapists, and schedules by minimizing errors and reducing administrative workload.
 - **Centralize and protect information:** Safeguard patient and professional data, ensuring confidentiality and compliance with data protection regulations.
 - **Enhance service quality:** Improve user satisfaction by providing performance indicators and statistical reports that support informed decision-making.
