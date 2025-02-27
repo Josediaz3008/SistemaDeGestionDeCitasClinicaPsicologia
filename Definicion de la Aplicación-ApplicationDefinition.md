@@ -1,7 +1,7 @@
 # Definición de la Aplicación
 
 ## 1. Establecer el objetivo de la aplicación
-El objetivo principal del **SistemaDeGestionDeCitasClinicas** es **modernizar y automatizar** la gestión de citas y el seguimiento terapéutico en la Clínica de Psicología del SEAP. Con esta aplicación, se busca:
+El objetivo principal del **SistemaDeGestionDeCitasClinicas** es **modernizar y automatizar** la gestión de citas y el seguimiento terapéutico en la Clínica SEAP de la Facultad de Psicología UADY. Con esta producto, se busca:
 
 - **Optimizar la asignación de recursos** (salas, terapeutas y horarios), minimizando errores y reduciendo la carga administrativa.  
 - **Centralizar y proteger la información** de pacientes y profesionales, garantizando la confidencialidad y el cumplimiento de normativas de protección de datos.  
