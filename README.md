@@ -14,6 +14,11 @@ Para el [diseño](https://www.figma.com/design/dbpzwYaXPzMPuejMPXfJ6W/SS?node-id
 
 ---
 
+## Presentation
+
+https://youtube.com/live/3RMkmE-FrJo
+---
+
 ## Investigación de Usuario
 
 Se incorporó la carpeta **User_Reasearch** que contiene la documentación generada a partir de la investigación de usuario. Esta documentación es fundamental para entender y mejorar la experiencia de los usuarios del sistema. En ella encontrarás:
