@@ -1,12 +1,11 @@
 
 
-## **Nombre del Proceso:**  
-*[Nombre del proceso]*
+# **Nombre del Proceso:**  
+## [Nombre del proceso]
 
 ---
 
 ## **Objetivo**  
-**Propósito:**  
 _[Describe brevemente el propósito del proceso.]_
 
 ---
