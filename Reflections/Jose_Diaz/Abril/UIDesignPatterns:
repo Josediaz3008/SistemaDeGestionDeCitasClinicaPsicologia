@@ -1,1 +1,6 @@
 UIDesignPatterns:
+For the design pattern, we used an adaptation of the "Progressive Disclosure" pattern. Each screen in our prototype focuses on one task, like scheduling an appointment, adding a therapist, viewing patient information, checking medical history, or seeing the agenda. The secretary can only create a new patient when they are trying to schedule an evaluation appointment. This helps to avoid leaving tasks incomplete and allows the user to focus only on the task they are doing.
+
+Also, when the user selects "new user," this task opens in a small pop-up window. This is an adaptation of the "Clear Primary Actions" pattern, which normally shows the main tasks clearly. We adapted it so the user stays focused on the main task, depending on the designed flow.
+
+In summary, in the project we used design patterns adapted to the tasks and based on our interpretation of the user’s thinking. That’s why getting user feedback is very important to know if what we created is right or if we need to change our focus.
