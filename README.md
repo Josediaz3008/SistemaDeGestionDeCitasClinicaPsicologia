@@ -1,33 +1,79 @@
-# Sistema de gestión de citas clinicas
+# Sistema de Gestión de Citas Clínicas 🏥
 
 ---
 
-## Documentación
+## Acerca del Proyecto 📋
 
-En la carpeta de [Documentación](Documentacion/) podras encontrar diagramas de flujo, diagramas UML y archivos auxiliares que se utilizan en la clínica para la ejecución de sus procesos.
+### Objetivo
+El **Sistema de Gestión de Citas Clínicas** busca modernizar y automatizar los procesos administrativos y terapéuticos en la Clínica SEAP de la Facultad de Psicología UADY. Nuestro objetivo principal es:
 
-Para el diseño de diagramas se utilizan los programas de [Drawio](https://app.diagrams.net/) y [AstahUML](https://astah.net/products/astah-uml/). Para cada diagrama se puede encontrar el archivo para su edición en la extensión correspondiente y una imagen vectorizada para su consulta.
+- Optimizar la asignación de recursos (salas, terapeutas y horarios)
+- Centralizar información de pacientes con seguridad y confidencialidad
+- Mejorar la calidad del servicio mediante indicadores de desempeño
+- Facilitar la toma de decisiones con reportes estadísticos en tiempo real
 
-En [Auxiliares](Documentacion/Auxiliares/) podras encontrar documentos como contratos, derechos y consentimientos que firma el paciente y asi como formatos y formularios que son rellenados por diversos actores del sistema.
+### Funcionalidades Clave 🔑
+- Agenda organizacional
+- Gestión de cancelaciones/reprogramaciones
+- Formularios digitales integrados
+- Generación de reportes estadísticos
 
-Para el [diseño](https://www.figma.com/design/dbpzwYaXPzMPuejMPXfJ6W/SS?node-id=6-2&t=uVoqxorTXVj3qHd7-1) se utilizó la herramienta de Figma y se tomaron en cuenta lo estandares de diseño de Material Design.
+### Relevancia 💡
+Este sistema impulsa la eficiencia operativa, mejora la experiencia del paciente y fortalece la formación académica, contribuyendo a la sostenibilidad del servicio psicológico en la comunidad.
 
 ---
 
-## Presentation
+## Prototipado 🎨
+Puedes explorar nuestro prototipo funcional en:  
+[https://carlosekraigoza.github.io/ClinicaWeb/](https://carlosekraigoza.github.io/ClinicaWeb/)
 
-https://youtube.com/live/3RMkmE-FrJo
 ---
 
-## Investigación de Usuario
+## Presentación del Proyecto 🎥
+Accede a nuestra presentación completa en YouTube:  
+[https://youtube.com/live/3RMkmE-FrJo](https://youtube.com/live/3RMkmE-FrJo)
 
-Se incorporó la carpeta **User_Reasearch** que contiene la documentación generada a partir de la investigación de usuario. Esta documentación es fundamental para entender y mejorar la experiencia de los usuarios del sistema. En ella encontrarás:
+---
 
-- **Perfiles de usuario, Personas y Escenarios:**  
-  Documentación que define los distintos perfiles de usuario, detalla las personas y describe escenarios de uso, ayudando a identificar y comprender las necesidades específicas de cada tipo de usuario.
+## Investigación de Usuario 🔍
+En la carpeta **User_Research** encontrarás:
+- Perfiles de usuario y escenarios
+- Metodología DCU implementada
+- Requisitos funcionales y no funcionales
+- Análisis de experiencia de usuario (UX)
 
-- **Metodología DCU (Diseño Centrado en el Usuario):**  
-  Información sobre la implementación de la metodología DCU, que orienta el proceso de diseño y desarrollo para asegurar que el sistema responda eficazmente a las expectativas y requerimientos de los usuarios.
+## Documentación 📚
+### Diagramas y Modelos
+- **Ubicación:** `Documentacion/`
+- **Herramientas usadas:** 
+  - 🎨 [Drawio](https://app.diagrams.net/) para diagramas de flujo
+  - 📐 [AstahUML](https://astah.net/products/astah-uml/) para modelos UML
 
-- **Requisitos de Software:**  
-  Especificaciones técnicas y funcionales derivadas del análisis de los usuarios y sus necesidades, que establecen las bases para el desarrollo y la mejora continua del sistema.
+### Diseño UX/UI
+- 🖌️ Prototipo en Figma:  
+  [https://www.figma.com/design/dbpzwYaXPzMPuejMPXfJ6W/SS](https://www.figma.com/design/dbpzwYaXPzMPuejMPXfJ6W/SS)
+- 🧱 Basado en Material Design
+
+### Formatos Clínicos
+- 📄 Documentos legales y formularios en:  
+  `Documentacion/Auxiliares/`
+
+---
+
+## Equipo de Trabajo 👨💻👩💻
+![Nuestro Equipo](https://github.com/Josediaz3008/SistemaDeGestionDeCitasClinicaPsicologia/blob/15b10245f5372cdf70637c74d6012a2827e86173/Images/Equipo_4.png)
+
+---
+
+## Tabla de Ponderación 📊
+| Integrante | Ponderación |
+|------------|-------------|
+| JAIME SEBASTIAN LAINES NABTE | 24% |
+| DECO ACIERNO HERNÁNDEZ | 19% |
+| DAVID ERNESTO ESCALANTE GARCIA | 19% |
+| JOSE ANTONIO DIAZ FERNANDEZ | 19% |
+| JOSE ALBERTO MURCIA CEN | 19% |
+
+**Total:** 100%
+
+---
