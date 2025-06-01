@@ -1,46 +1,56 @@
 
 
 # **Nombre del Proceso:**  
-## [Nombre del proceso]
+## Consulta de pacientes
 
 ---
 
 ## **Objetivo**  
-_[Describe brevemente el propósito del proceso.]_
+Buscar, filtrar y administrar el registro de pacientes activos, en espera o archivados, permitiendo acceder rápidamente a su información clave para la asignación de citas y seguimiento clínico.
 
 ---
 
 ## **Actores**  
-_[Describe en forma de lista junto a una breve descripción todos los actores involucrados en el proceso.]_
+- Secretaria: Realiza búsquedas y filtra pacientes según necesidades administrativas.
+- Terapeutas: Consultan historial de pacientes asignados (en integración con historia clínica).
 
 ---
 
 ## **Entradas**  
-- [Recurso, información o insumo 1]  
-- [Recurso, información o insumo 2]  
-- ...
+- Nombre del paciente (para búsqueda directa)
+- Tipo de servicio (evaluación/terapia)
+- Estado (activo/en espera/archivado)
+- Pacientes registrados almacenados en base de datos
 
 ---
 
 ## **Pasos**  
-1. [Primer paso a realizar]  
-2. [Segundo paso]  
-3. [Tercer paso]  
-... 
+1. **Acceso al Módulo de Pacientes:**  
+   La Secretaria inicia sesión en el sistema y accede al módulo de gestión de pacientes, desde horarios disponibles en la pagina principal.
+2. **Filtrado de pacinetes:**  
+   La Secretaria ajusta filtros para buscar un paciente en especifico, ya sea por nombre (parcial o completo) o por tipo de servicio y estado del paciente, los resultados se despliegan conforme se ajustan los filtros.
+3. **Visualización de datos:**  
+   El sistema despliega una lista con los pacientes coincidentes con los filtros, los resultados muestran el nombre, tipo y estado del servicio.
+4. **Acceso a datos del paciemte**  
+   La Secretaria ingresa a uno de los resultados desplegados para acceder a datos de dicho paciente como, información basica, asistencias, acciones y documentos.
 
 ---
 
 ## **Excepciones**  
-_[Describe las posibles excepciones o incidencias que puedan ocurrir durante el proceso y cómo gestionarlas para evitar que se incumpla el proceso.]_
+- **Sin resultados:**  
+  Sistema notifica al usuario la ausencia de resultados de la busqueda.
 
 ---
 
 ## **Resultados Esperados**  
-_[Describe el resultado final del proceso.]_
+- Listado filtrado de pacientes según criterios aplicados
+- Acceso rápido a información clave para gestión de citas
+- Identificación clara de estado (activo/en espera/archivado)
 
 ---
 
 ## **Notas Adicionales**  
-_[Información extra o consideraciones importantes.]_
+- El filtro por "tipo de servicio" ayuda en asignación de terapeutas especializados
+- Cada paciente tiene folio único generado automáticamente añ crearse el mismo
 
 ---
