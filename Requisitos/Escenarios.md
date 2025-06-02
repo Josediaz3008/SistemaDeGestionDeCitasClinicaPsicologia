@@ -4,9 +4,9 @@ Los escenarios describen situaciones de uso representativas que permiten contras
 estado futuro deseado (**Escenario Ideal**) frente al estado actual (**Escenario Contraste**),
 donde la clínica aún opera con procesos manuales y herramientas dispersas.
 
-A partir de las nuevas funcionalidades prototipadas para el **Módulo Administrativo** —agenda,
-terapeutas, salas, reportes, requerimientos y notificaciones— se han **actualizado los tres
-escenarios originales** y se añaden **tres nuevos** para cubrir el alcance completo del sistema.
+A partir de las nuevas funcionalidades prototipadas para el **Módulo Administrativo** agenda,
+terapeutas, salas, reportes, requerimientos y notificaciones se han **actualizado los tres
+escenarios originales** y se añaden **tres nuevos** para cubrir el alcance completo del prototipo.
 
 ---
 
