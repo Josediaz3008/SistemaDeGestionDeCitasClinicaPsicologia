@@ -1,66 +1,102 @@
-# **Nombre del Proceso:**  
-## Administración de consultorios
+# **Nombre del Proceso**  
+## Administración de Salas / Consultorios (Prototipo – sin backend)
 
 ---
 
 ## **Objetivo**  
-_Crear y actualizar la información de los consultorios, como el nombre y el tipo._
+Permitir a la **Coordinadora** (o Administrador) **crear, editar, bloquear/liberar y eliminar** consultorios dentro de la interfaz del prototipo para que el equipo valide flujos de agenda y distribución de servicios **sin** necesidad de un servidor ni base de datos real.
+
+> **Persistencia simulada**  
+> Toda la información se guarda en `localStorage` o en variables en memoria. Se pierde al borrar caché o hacer “Hard Reload”.
 
 ---
 
 ## **Actores**  
-- **Coordinadora:** Ejecuta la creación o edición de datos del consultorio.
+
+| Actor           | Permisos en la UI                  | Observaciones                         |
+|-----------------|------------------------------------|---------------------------------------|
+| **Coordinadora**| Alta, edición, bloqueo/liberación y eliminación visual. | Acceso completo a los botones de la tabla. |
+| **Administrador** | Mismos permisos que la Coordinadora.| Diferencia únicamente en la etiqueta/rol. |
+| **Secretaria / Becaria** | Solo lectura. | En el prototipo se emula ocultando los botones de acción. |
 
 ---
 
-## **Entradas**  
-- Nombre del consultorio.  
-- Tipo de consultorio, basado en el tipo de contacto o la edad del paciente.
+## **Entradas (Formulario/Módal)**  
+
+- **Nombre** del consultorio (único).  
+- **Servicios** que atiende (checkbox — debe seleccionarse al menos uno).  
+- **Horario de operación**:  
+  - **Hora Inicio** y **Hora Fin** dentro del rango **09 h – 18 h**.  
+  - Fin debe ser posterior al inicio.  
 
 ---
 
-## **Pasos**  
+## **Flujo UI (prototipo)**  
 
-### En caso de eliminación  
-1. **Verificación:** La Coordinadora ingresa a la sección de consultorios de la barra de navegación y verifica en el listado de consultorios que este ha sido creado.  
-2. **Eliminación:** Una vez verificado, presiona el botón “Eliminar” en la fila del consultorio en la lista, lo que abrirá un mensaje de confirmación.  
-3. **Confirmación:** La Coordinadora confirma la eliminación del consultorio y el sistema le notifica que el consultorio fue eliminado con éxito.  
-4. **Registro de cambios:** El sistema registra los cambios y actualiza el listado de consultorios.  
+### 1. Ver listado  
+La Coordinadora ingresa a **Salas** desde la barra de navegación y revisa la tabla actual (datos cargados desde `localStorage.salas[]`).
 
-### En caso de creación  
-1. **Verificación:** La Coordinadora ingresa a la sección de consultorios de la barra de navegación y verifica en el listado de consultorios que este aún no esté creado.  
-2. **Apertura de formulario:** Una vez verificado, presiona el botón “Agregar Nuevo Consultorio”, lo que abrirá un formulario.  
+### 2. Crear  
+| Paso | Descripción |
+|------|-------------|
+| 2.1 | `click` **«Agregar Sala»**. Se muestra un modal vacío. |
+| 2.2 | Ingresa **Nombre**, selecciona **Servicios** y define **Horario**. |
+| 2.3 | `Guardar` → JS valida.<br>Si todo es correcto, inserta un objeto en `localStorage.salas[]` y refresca la tabla (animación “fila nueva”). |
 
-### En caso de edición  
-1. **Verificación:** La Coordinadora ingresa a la sección de consultorios de la barra de navegación y verifica que el consultorio esté en la lista.  
-2. **Apertura de formulario:** Una vez verificado, presiona el botón “Editar”, lo que abrirá un formulario.  
+### 3. Editar  
+| Paso | Descripción |
+|------|-------------|
+| 3.1 | `click` **Editar** en la fila deseada. Modal con datos precargados. |
+| 3.2 | Modifica campos → `Guardar`. |
+| 3.3 | Objeto correspondiente se sobrescribe en `localStorage` y la fila se actualiza al cerrar el modal. |
 
-### Para creación y edición  
-3. **Ingreso de nombre y tipo:** La Coordinadora introduce el nombre asignado y el tipo del consultorio, basado en si es de primer contacto o a las personas que atiende (niños o adultos), posteriormente guarda esos cambios.  
-4. **Solicitud de confirmación:** El sistema solicita una confirmación para llevar a cabo la creación del consultorio.  
-5. **Confirmación:** La Coordinadora confirma la creación/edición del consultorio y el sistema le notifica que el consultorio fue creado/editado con éxito.  
-6. **Registro del consultorio y cierre:** El sistema registra los cambios y actualiza el listado de consultorios.
+### 4. Bloquear / Liberar horario (opcional)  
+| Paso | Descripción |
+|------|-------------|
+| 4.1 | Dentro del modal de edición, `click` **«Bloquear horario»**. |
+| 4.2 | Selecciona rango y motivo → se agrega un objeto a `localStorage.bloqueos[]`. |
+| 4.3 | La vista Agenda pinta el tramo bloqueado en rojo; el slot queda inhabilitado para pruebas de reprogramación. |
+| 4.4 | Para liberar, misma ruta → `Eliminar bloqueo`. |
+
+### 5. Eliminar (borrado visual)  
+| Paso | Descripción |
+|------|-------------|
+| 5.1 | `click` **Eliminar** en la fila. Aparece confirmación (`alert`). |
+| 5.2 | Si acepta, la fila se quita de la tabla y del arreglo. *(No se revisan citas futuras—limitación del prototipo).* |
 
 ---
 
-## **Excepciones**  
-- **Nombre repetido:**  
-  En caso de que se ingrese un nombre ya registrado en el sistema con otro consultorio, se notificará que el nombre ya está en uso y no se llevará a cabo la creación/edición del consultorio hasta que se ingrese un nombre no repetido.  
+## **Excepciones (validaciones en front-end)**  
 
-- **Nombre inválido:**  
-  En caso de que el nombre contenga caracteres inválidos como caracteres especiales y signos de puntuación, se notificará que el nombre contiene caracteres inválidos y no se llevará a cabo la creación/edición del consultorio hasta que se ingrese un nombre válido.
+| Código | Caso | Mensaje (ejemplo) |
+|--------|------|-------------------|
+| EX-01  | **Nombre duplicado** | “Ya existe una sala con ese nombre.” |
+| EX-02  | **Nombre inválido** (caracteres especiales) | “Nombre inválido; use solo letras y números.” |
+| EX-03  | **Servicios vacíos** | “Seleccione al menos un servicio.” |
+| EX-04  | **Horario fuera de rango** o Fin ≤ Inicio | “Horario inválido (09 h – 18 h y fin > inicio).” |
+
+> Todos los mensajes se muestran mediante `alert`, `toast` o `snackbar` en la misma página.
 
 ---
 
-## **Resultados Esperados**  
-- En caso de crear un nuevo consultorio, este deberá registrarse en el sistema y aparecer en una nueva fila del listado de consultorios.  
-- En caso de editar un consultorio, los datos editados deberán registrarse y aparecer en la lista (en la fila del consultorio editado).  
-- En caso de eliminar un consultorio, el consultorio deberá eliminarse del sistema y dejar de visualizarse en la lista.
+## **Resultados Esperados (mundo prototipo)**  
+
+| Acción | Efecto inmediato | Persistencia |
+|--------|------------------|--------------|
+| **Crear** | Nueva fila aparece en la tabla con animación. | Se agrega al `localStorage`. |
+| **Editar** | Datos actualizados en la fila. | Objeto sobrescrito en `localStorage`. |
+| **Eliminar** | Fila desaparece. | Objeto removido de `localStorage`. |
+| **Bloquear** | Slots pintados en rojo en Agenda. | Registro en `localStorage.bloqueos[]`. |
 
 ---
 
 ## **Notas Adicionales**  
-- Este proceso corresponde a la Coordinadora, al ser un proceso que puede comprometer la gestión de citas de la clínica.  
-- Es importante que la eliminación o edición de un consultorio no afecte directamente a citas ya programadas. En caso de que sí lo haga, se deberá notificar y coordinar la reprogramación de las citas afectadas si es necesario.
+
+1. **Monousuario**: cada navegador es una instancia aislada; no hay WebSocket ni sincronía.  
+2. **Bitácora ficticia**: los “logs” se imprimen en consola.  
+3. **Integridad referencial**: el prototipo **no** impide borrar salas usadas en citas porque las citas también son objetos locales.  
+4. **Migración futura**: al pasar a backend se reemplazarán accesos a `localStorage` por API REST/GraphQL y se activarán reglas de negocio reales (ej. no eliminar sala con citas activas).  
+5. **Pruebas Rápidas**: para restablecer el estado basta con “Limpiar datos de sitio” o abrir en incógnito.
 
 ---
+
