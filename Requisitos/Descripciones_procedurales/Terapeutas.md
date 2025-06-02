@@ -1,174 +1,79 @@
-# **Nombre del Proceso:**  
-## Creación del Terapeuta
+# **Nombre del Proceso**
+
+## Gestión de Terapeutas (Prototipo – sin backend)
 
 ---
 
-## **Objetivo**    
-Registrar a nuevos terapeutas en el sistema de gestión de citas clínicas, asegurando que sus datos personales, credenciales, especialidad y disponibilidad inicial estén correctamente configurados para su incorporación a la agenda institucional.
+## **Objetivo**
+
+Permitir a la **Coordinadora** o **Administrador** dar de alta, editar datos básicos y horarios, filtrar, y (cuando proceda) desactivar registros de terapeutas en la interfaz del prototipo, garantizando que el equipo pruebe la asignación de citas y la carga de trabajo **sin** depender de un servidor real.
+
+> **Persistencia simulada**
+> Los registros se almacenan únicamente en la memoria local del navegador. Se pierden al limpiar caché o recargar con “Hard Reload”.
 
 ---
 
-## **Actores**  
-- **Secretaria:** Encargada de ingresar los datos del nuevo terapeuta, asignar su disponibilidad preliminar y vincularlo con el módulo de agenda.  
-- **Coordinadora:** Verifica la validez de los datos registrados, aprueba la activación del perfil del terapeuta y supervisa la correcta integración en la programación clínica.
+## **Actores**
+
+| Actor                    | Permisos visibles en la interfaz                                           |
+| ------------------------ | -------------------------------------------------------------------------- |
+| **Coordinadora**         | Alta, edición de datos y horarios, cambio de rol, baja visual              |
+| **Administrador**        | Los mismos que la Coordinadora                                             |
+| **Secretaria / Becaria** | Solo lectura (no ve los botones de acción)                                 |
+| **Terapeuta** (futuro)   | Solo consulta de su propio perfil (fuera del alcance actual del prototipo) |
 
 ---
 
-## **Entradas**  
-- Datos personales del terapeuta (nombre, documento, correo, número de contacto)  
-- Especialidad y tipo de atención que brindará (psicoterapia individual, grupal, etc.)  
-- Disponibilidad horaria preliminar  
-- Información académica o profesional (título, número de cédula profesional, si aplica)  
-- Unidad o facultad asignada
+## **Entradas**
+
+* **Nombre completo** del terapeuta
+* **Correo** institucional o personal
+* **Teléfono** de contacto
+* **Rol** (Activo / Pasante / Externo)
+* **Tipo de servicio** que brinda (Psicodiagnóstico, Terapia individual, etc.)
+* **Horarios disponibles** (día de la semana + hora inicio → hora fin + nota opcional)
 
 ---
 
-## **Pasos**  
-1. **Acceso al Módulo de Terapeutas:**  
-   La Secretaria inicia sesión en el sistema y accede al módulo de gestión de terapeutas.  
-2. **Selección de “Nuevo Terapeuta”:**  
-   Hace clic en la opción “Registrar nuevo terapeuta” en la interfaz del sistema.  
-3. **Ingreso de Datos Personales y Profesionales:**  
-   Completa el formulario con los datos requeridos del terapeuta, como nombre completo, correo institucional, especialidad, facultad y nivel de atención.  
-4. **Configuración de Disponibilidad Inicial:**  
-   Define la disponibilidad semanal del terapeuta, indicando los días y horas en los que podrá recibir pacientes.  
-5. **Guardar Registro:**  
-   La Secretaria guarda la información y el sistema crea el nuevo perfil del terapeuta.
+## **Pasos**
+
+| Fase                          | Descripción resumida                                                                                                                                      |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Listar / Filtrar**       | La Coordinadora abre **Terapeutas**. Puede filtrar por nombre, tipo de servicio o rol.                                                                    |
+| **2. Crear**                  | Pulsa **“Nuevo Terapeuta”** → aparece formulario vacío.<br>Ingresa datos, añade uno o varios horarios y confirma. El nuevo terapeuta aparece en la lista. |
+| **3. Editar**                 | Pulsa **“Editar”** en la fila deseada → formulario con datos precargados.<br>Modifica información o agrega / quita horarios y confirma.                   |
+| **4. Desactivar**             | Cambia el rol a **Externo** o equivalente para marcarlo como no disponible; en el listado su etiqueta de rol cambia de color.                             |
+| **5. (Opcional) Baja visual** | Puede ocultar temporalmente al terapeuta cambiando su visibilidad en la lista (no se elimina de forma definitiva en el prototipo).                        |
 
 ---
 
-## **Excepciones**  
-- **Datos Incompletos o Erróneos:**  
-  Si algún campo obligatorio no está lleno o contiene información inválida, el sistema no permitirá continuar y mostrará un mensaje de error.  
-- **Duplicación de Terapeuta:**  
-  Si se detecta que el terapeuta ya está registrado (por ejemplo, por correo electrónico o número de documento), se emite una advertencia y se impide la creación duplicada.
+## **Excepciones**
+
+| Código     | Escenario                                         | Mensaje / Gestión en la interfaz                |
+| ---------- | ------------------------------------------------- | ----------------------------------------------- |
+| **EX-T01** | Correo duplicado                                  | “Ya existe un terapeuta con ese correo.”        |
+| **EX-T02** | Correo o teléfono con formato inválido            | Se solicita corregir el dato antes de guardar.  |
+| **EX-T03** | Horario solapado dentro del mismo terapeuta       | Se indica que las franjas no deben traslaparse. |
+| **EX-T04** | Intento de guardar sin al menos un horario válido | Se pide definir al menos una franja disponible. |
 
 ---
 
-## **Resultados Esperados**  
-- El terapeuta queda correctamente registrado en el sistema, con su disponibilidad inicial activa.  
-- Su perfil aparece en la lista de terapeutas disponibles para la programación de citas.  
-- Se garantiza la trazabilidad de la creación, indicando fecha, hora y usuario que realizó el registro.
+## **Resultados Esperados**
+
+| Acción          | Efecto inmediato en la interfaz                                                                                       |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Crear**       | Aparece una nueva ficha de terapeuta en la lista, visible en filtros.                                                 |
+| **Editar**      | Los cambios de contacto, rol o horario se reflejan al instante.                                                       |
+| **Desactivar**  | El terapeuta muestra su nuevo rol (color gris) y deja de aparecer como opción al asignar citas en la Agenda simulada. |
+| **Baja visual** | El registro se oculta de la lista principal; puede volver a mostrarse al restablecer filtros.                         |
 
 ---
 
-## **Notas Adicionales**  
-- Se recomienda que la Coordinadora revise periódicamente los registros nuevos para asegurar su correcta integración.  
-- El sistema debe contar con validaciones en tiempo real para evitar errores comunes en la captura de datos.  
+## **Notas Adicionales**
 
----
-
-##
-# **Nombre del Proceso:**  
-## Modificación de datos del Terapeuta
-
----
-
-## **Objetivo**  
-Controlar y actualizar en tiempo real la disponibilidad de los terapeutas, permitiendo la identificación de posibles conflictos o ausencias y facilitando la toma de decisiones para optimizar la programación de citas.
-
----
-
-## **Actores**  
-- **Secretaria:** Realiza la revisión periódica y la actualización de la disponibilidad de los terapeutas en el sistema, utilizando la interfaz de gestión de agendas.  
-- **Coordinadora:** Supervisa el proceso, valida los cambios y toma decisiones en situaciones excepcionales, como ausencias prolongadas o cambios imprevistos en la agenda.
-
----
-
-## **Entradas**  
-- Registro actualizado de la agenda de terapias y citas  
-- Información personal y de disponibilidad asignada a cada terapeuta  
-- Notificaciones o alertas de incidencias en los horarios programados  
-- Información de cambios o solicitudes de ajuste provenientes de los terapeutas o del personal administrativo
-
----
-
-## **Pasos**  
-1. **Acceso a la Sección de Terapeutas:** La Secretaria inicia sesión en el sistema y navega hacia el módulo de “Terapeutas”.  
-2. **Visualización de la Agenda de Terapeutas:** Se despliega un listado de los terapeutas indicando sus datos personales, horarios, etc.  
-3. **Selección y Revisión:** La Secretaria selecciona un terapeuta específico para revisar su calendario, verificando que los horarios disponibles y los asignados sean correctos y no presenten conflictos.  
-4. **Actualización del Estado:** La Secretaria procede a actualizar el estado o información deseado del terapeuta.  
-5. **Registro de Cambios:** El sistema registra en un historial la modificación realizada, incluyendo la fecha, hora y el usuario (la Secretaria o, en casos de intervención, Coordinadora) que efectuó el cambio.  
-6. **Supervisión y Validación:** La Coordinadora revisa periódicamente los cambios y recibe notificaciones de cualquier incidencia para confirmar que la disponibilidad reflejada es correcta y está alineada con la realidad del servicio.
-
----
-
-## **Excepciones**  
-- **Conflicto en la Agenda:**  
-  Si se detecta que dos citas se han superpuesto o que un terapeuta figura como disponible mientras tiene asignado un bloqueo, el sistema envía una alerta inmediata. La Secretaria debe corregir el conflicto manualmente o notificar a Coordinadora para tomar una decisión conjunta.  
-
-- **Error de Sincronización de Datos:**  
-  En caso de que la actualización en tiempo real falle (por ejemplo, por problemas de conexión o error del servidor), se solicita al usuario refrescar la pantalla; si el problema persiste, se debe notificar al área de soporte para restablecer la comunicación.  
-
-- **Inconsistencia en los Datos de Disponibilidad:**  
-  Si la información del terapeuta no coincide con la realidad (por ejemplo, el terapeuta reporta una ausencia no reflejada en el sistema), se debe proceder a una actualización manual y registrar la incidencia en el historial para futuras auditorías.
-
----
-
-## **Resultados Esperados**  
-La disponibilidad de los terapeutas se refleja correctamente en la agenda del sistema, sin conflictos ni inconsistencias. Todas las modificaciones quedan registradas en el historial y se notifican oportunamente las incidencias a los responsables, garantizando así la correcta gestión de citas.
-
----
-
-## **Notas Adicionales**  
-Es recomendable realizar revisiones periódicas por parte de la Coordinadora para garantizar que los datos reflejados en el sistema estén siempre alineados con la realidad operativa.  
-
----
-
-##
-# **Nombre del Proceso:**  
-## Consulta de la información del terapeuta
-
----
-
-## **Objetivo**   
-_Consultar la información de un terapeuta en específico, ya sea mediante selección o búsqueda manual._
-
----
-
-## **Actores**  
-- **Secretaria:** Ejecuta la consulta de un terapeuta manualmente o mediante búsqueda.
-
----
-
-## **Entradas**  
-- En caso de ser mediante búsqueda por filtros:  
-  - Nombre del terapeuta  
-  - Rol del terapeuta  
-  - Tipo de servicio  
-- En caso de ser búsqueda manual (mediante clickeando en la lista), no necesita entradas.
-
----
-
-## **Pasos**  
-
-**En caso de búsqueda:**  
-1. **Acceso al sistema:** La secretaría entra al sistema de gestión de sistemas y da click en “Ir a Agenda”.  
-2. **Acceso a sección de terapeutas:** La secretaria entra a la sección de terapeutas de la barra de navegación, donde se desplegará una sección de búsqueda por filtros.  
-3. **Ingreso de filtros:** La secretaria ingresa los datos del terapeuta a consultar en los filtros de búsqueda (nombre, rol y tipo).  
-4. **Ejecución de búsqueda:** La secretaria ejecuta la búsqueda y la lista se actualizará mostrando al terapeuta que cumple con los criterios de búsqueda.  
-5. **Consulta:** La secretaría hace click en el nombre del terapeuta y se mostrará la información del terapeuta como pacientes asignados, email, rol, tipo, servicio y horarios de disponibilidad.  
-
-**En caso de búsqueda manual (terapeuta aparece en la lista):**  
-1. **Acceso al sistema:** La secretaría entra al sistema de gestión de sistemas y da click en “Ir a Agenda”.  
-2. **Acceso a sección de terapeutas:** La secretaria entra a la sección de terapeutas de la barra de navegación, donde se desplegará un lista de terapeutas.  
-3. **Consulta:** La secretaría hace click en el nombre del terapeuta y se mostrará la información del terapeuta como pacientes asignados, email, rol, tipo, servicio y horarios de disponibilidad.
-
----
-
-## **Excepciones**  
-**Ausencia de coincidencias:**  
-La búsqueda ejecutada mediante filtros no genera ninguna coincidencia o la coincidencia no es la deseada, en estos casos la secretaría deberá corroborar que los datos ingresados sean correctos o que existe un terapeuta con los datos ingresados.
-
----
-
-## **Resultados Esperados**  
-- En caso de ejecutar una búsqueda por filtros, la búsqueda deberá proporcionar al terapeuta según los datos ingresados y desplegar sus datos al hacer click.  
-- En caso de hacer una búsqueda manual, al hacer click en el terapeuta, se deberán desplegar los datos del mismo.
-
----
-
-## **Notas Adicionales**  
-_Ninguna._
+1. **Horarios y Agenda** – La Agenda del prototipo lee los horarios declarados para evitar empalmes cuando se realizan pruebas de citación manual.
+2. **Monousuario** – Cada navegador funciona de forma independiente; no existe réplica entre distintos equipos.
+3. **Edición segura** – El prototipo no valida conflictos con citas ya asignadas; se asume que el evaluador lo comprueba manualmente.
+4. **Regenerar estado** – Para empezar “desde cero” basta con limpiar los datos de sitio o abrir la app en modo incógnito.
 
 ---
