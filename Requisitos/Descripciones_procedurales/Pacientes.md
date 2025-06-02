@@ -26,31 +26,31 @@ Buscar, filtrar y administrar el registro de pacientes activos, en espera o arch
 
 ## **Pasos**  
 1. **Acceso al Módulo de Pacientes:**  
-   La Secretaria inicia sesión en el sistema y accede al módulo de gestión de pacientes, desde horarios disponibles en la pagina principal.
-2. **Filtrado de pacinetes:**  
-   La Secretaria ajusta filtros para buscar un paciente en especifico, ya sea por nombre (parcial o completo) o por tipo de servicio y estado del paciente, los resultados se despliegan conforme se ajustan los filtros.
+   La secretaria inicia sesión en el sistema y accede al módulo de gestión de pacientes, desde horarios disponibles en la página principal.
+2. **Filtrado de pacientes:**  
+   La secretaria ajusta filtros para buscar un paciente en específico, ya sea por nombre (parcial o completo) o por tipo de servicio y estado del paciente, los resultados se despliegan conforme se ajustan los filtros.
 3. **Visualización de datos:**  
    El sistema despliega una lista con los pacientes coincidentes con los filtros, los resultados muestran el nombre, tipo y estado del servicio.
 4. **Acceso a datos del paciemte**  
-   La Secretaria ingresa a uno de los resultados desplegados para acceder a datos de dicho paciente como, información basica, asistencias, acciones y documentos.
+   La secretaria ingresa a uno de los resultados desplegados para acceder a datos de dicho paciente como, información básica, asistencias, acciones y documentos.
 
 ---
 
 ## **Excepciones**  
 - **Sin resultados:**  
-  Sistema notifica al usuario la ausencia de resultados de la busqueda.
+  Sistema notifica al usuario la ausencia de resultados de la búsqueda.
 
 ---
 
 ## **Resultados Esperados**  
-- Listado filtrado de pacientes según criterios aplicados
-- Acceso rápido a información clave para gestión de citas
-- Identificación clara de estado (activo/en espera/archivado)
+- Listado filtrado de pacientes según criterios aplicados.
+- Acceso rápido a información clave para gestión de citas.
+- Identificación clara de estado (activo/en espera/archivado).
 
 ---
 
 ## **Notas Adicionales**  
-- El filtro por "tipo de servicio" ayuda en asignación de terapeutas especializados
-- Cada paciente tiene folio único generado automáticamente añ crearse el mismo
+- El filtro por "tipo de servicio" ayuda en asignación de terapeutas especializados.
+- Cada paciente tiene folio único generado automáticamente al crearse el mismo.
 
 ---
