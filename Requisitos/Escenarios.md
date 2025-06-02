@@ -1,4 +1,4 @@
-# Introducción
+# Introducción 
 
 Los escenarios describen situaciones de uso representativas que permiten contrastar el
 estado futuro deseado (**Escenario Ideal**) frente al estado actual (**Escenario Contraste**),
