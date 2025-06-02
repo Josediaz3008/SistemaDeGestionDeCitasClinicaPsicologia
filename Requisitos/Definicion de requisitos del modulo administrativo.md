@@ -1,4 +1,3 @@
-```markdown
 # Requisitos Funcionales
 
 ## Módulo **Agenda**
